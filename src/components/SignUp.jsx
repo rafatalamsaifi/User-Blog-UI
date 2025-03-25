@@ -8,7 +8,7 @@ const Signup = () => {
     password: "",
     profileImage: null,
   });
-  const [message, setMessage] = useState(""); // Added state for message
+  const [message, setMessage] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -17,13 +17,13 @@ const Signup = () => {
 
     try {
       await axios.post("http://localhost:8000/api/auth/signup", data);
-      setMessage("Signup successful! Redirecting to login..."); // Success message
+      setMessage("Signup successful! Redirecting to login..."); 
       setTimeout(() => {
         window.location.href = "/login";
-      }, 2000); // Redirect after 2 seconds
+      }, 2000); 
     } catch (error) {
       console.error(error);
-      setMessage("Signup failed. Please try again."); // Error message
+      setMessage("Signup failed. Please try again.");
     }
   };
 
@@ -70,7 +70,6 @@ const Signup = () => {
         </button>
       </form>
       
-      {/* Display message if it exists */}
       {message && (
         <p style={{ 
           color: message.includes("failed") ? "red" : "green",
